@@ -27,6 +27,8 @@ INSERT INTO Reference_Conditions(Condition_Description)
 INSERT INTO Reference_Conditions(Condition_Description)
 	VALUES('Threw son down the stairs');
 
+
+
 -- Ref_Indiv_Condition
 INSERT INTO Ref_Indiv_Condition (P_Num, Condition_Key)
     VALUES(1,2);
@@ -39,6 +41,8 @@ INSERT INTO Ref_Indiv_Condition (P_Num, Condition_Key)
 --Brad:--
 INSERT INTO Ref_Indiv_Condition (P_Num, Condition_Key)
     VALUES(4,4);
+
+
 
 -- Ref_Household_Info
 INSERT INTO Ref_Household_Info (P_Num, H_F_Name, H_L_Name, H_Date, H_MI_Name, H_Sex, H_Race, H_Comment, H_Relation)
@@ -66,8 +70,7 @@ INSERT INTO Other_Agencies(P_Num, Agency_Name, Working_With, Relation)
 
 INSERT INTO Other_Agencies(P_Num, Agency_Name, Working_With, Relation)
 	VALUES(3,'TreeHouseCo', 'Ronnie', 'Friend');
-
---Brad: record not in the DB--
+--Brad:--
 INSERT INTO Other_Agencies(P_Num, Agency_Name, Working_With, Relation)
 	VALUES(4,'Help', 'Amanda', 'Neice');
 
@@ -141,8 +144,7 @@ INSERT INTO Employees(E_F_NAME, E_L_NAME, Email, Home_Phone, Cell_Phone, Permiss
 
 INSERT INTO Employees(E_F_NAME, E_L_NAME, Email, Home_Phone, Cell_Phone, Permission_Lvl, Password)
 	VALUES('Nicholas', 'Johnson', 'nick.johnson@gmail.com', '8458352356', '8454733826', 'Employee', 'catfishsoup');
-
---Brad: record not in the DB--
+--Brad:--
 INSERT INTO Employees(E_F_NAME, E_L_NAME, Email, Home_Phone, Cell_Phone, Permission_Lvl, Password)
 	VALUES('Lando', 'Carlissian', 'Lando.Carlissian@gmail.com', '8454567295', '8453219764', 'Employee', 'password123');
 
@@ -164,10 +166,10 @@ INSERT INTO Classes_Scheduled(CID, EID, Location_ID, C_Subject, Date_Time_Schedu
 
 INSERT INTO Classes_Scheduled(CID, EID, Location_ID, C_Subject, Date_Time_Schedules)
 	VALUES(4, 1, 1, 2, '2016-11-10');
-
---Brad: record not in the DB--
+--Brad:--
 INSERT INTO Classes_Scheduled(CID, EID, Location_ID, C_Subject, Date_Time_Schedules)
 	VALUES(5,1,3,4,'2016-11-14');
+
 
 -- Class_Attendence
 INSERT INTO Class_Attendence(EID, Class_ID, P_Num, Participant_Comment)
@@ -175,8 +177,7 @@ INSERT INTO Class_Attendence(EID, Class_ID, P_Num, Participant_Comment)
 
 INSERT INTO Class_Attendence(EID, Class_ID, P_Num, Participant_Comment)
 	VALUES(1,2,1,'Displayed good behavior during class');
-
---Brad: record not in the DB--	
+--Brad:--	
 INSERT INTO Class_Attendence(EID, Class_ID, P_Num, Participant_Comment)
 	VALUES(3,3,4,'Tried to demonstrate how he sits on his kids using another participant');
 
@@ -188,7 +189,10 @@ INSERT INTO Consent_to_Release_Info(P_Num, Agency_Name, Contact_F_Name, Contact_
 INSERT INTO Consent_to_Release_Info(P_Num, Agency_Name, Contact_F_Name, Contact_L_Name, Contact_Address_Street, Contact_Address_City, Contact_Address_State, Contact_Address_Zipcode, Contact_Phone, Date_Contacted, Consent_Form_Path)
   VALUES(1, 'Drug Addicts Anon.', 'Stephanie', 'Norman', '456 Nodrugz Street', 'Poughkeepsie', 'NY', 12601, 8456738492, '2016-08-15', 'Normal Consent Form Path');
   
---Brad: record not in the DB--	
+
+
+-- Participant_Intake
+--Brad:--	
 INSERT INTO Participant_Intake(P_Num, Age, Num_People_in_Home, Relation_to_Household, Daytime_Phone, Daytime_Msg, Evening_Phone,
  Date_of_Birth, Occupation, Religion, Ethnicity, Languages, Handicapping_cond, Last_Year_of_School, Drug_Alcohol_Issue, Drug_if_Yes_Comment,
   Length_Sep_From_Child, Length_Sep_From_Oth_Parent, Status_Relation_Oth_Parent, Parent_Together_Status, Involved_W_CPS, If_Yes_Prev_Involved_W_CPS,
@@ -200,8 +204,6 @@ INSERT INTO Participant_Intake(P_Num, Age, Num_People_in_Home, Relation_to_House
         Other_Members_in_Parenting, If_Oth_Members_in_Parent)
 	VALUES(4,25,5,'Father','5564313670','true','5564313670','1989-04-28','Construction Worker', 'Catholic','Caucasian','English','No Handicaps','Highschool', 'true','Alcoholic','2 months','2 months','Divorced','Not together', 'false' , 'false','true','police','Abusive to family members' , 'N/A','No safety to participate needs', 'Needs to stop sitting on children','No other parenting classes','No other parent long ago','true','verbal','false','none','Anger management','Casey','Anthony','Friend',8454248396,'Anger Management','true','true','true','true','true','Restraining order issued via police report','true','true','Child abuse charges','false','N/A','false','N/A','false','N/A'); 
 
-
--- Participant_Intake
 INSERT INTO Participant_Intake(P_Num, Age, Num_People_in_Home, Relation_to_Household, Daytime_Phone, Daytime_Msg, Evening_Phone,
  Date_of_Birth, Occupation, Religion, Ethnicity, Languages, Handicapping_cond, Last_Year_of_School, Drug_Alcohol_Issue, Drug_if_Yes_Comment,
   Length_Sep_From_Child, Length_Sep_From_Oth_Parent, Status_Relation_Oth_Parent, Parent_Together_Status, Involved_W_CPS, If_Yes_Prev_Involved_W_CPS,
@@ -235,8 +237,7 @@ INSERT INTO Intk_Children(P_Num, Ch_F_Name, Ch_L_Name, Ch_Age, Ch_M_Initial, Ch_
 
 INSERT INTO Intk_Children(P_Num, Ch_F_Name, Ch_L_Name, Ch_Age, Ch_M_Initial, Ch_Sex, Ch_Race, Ch_Address_Street, Ch_Address_City, Ch_Address_State, Ch_Address_Zipcode, Custody)
 	VALUES(3, 'Tony', 'Stark', 16, 'W', 'M', 'Hispanic', '123 Abc Lane', 'Glen Rock', 'NJ', '07562', 'Grandmother');
-
---Brad: record not in the DB--	
+--Brad:--	
 INSERT INTO Intk_Children(P_Num, Ch_F_Name, Ch_L_Name, Ch_Age, Ch_M_Initial, Ch_Sex, Ch_Race, Ch_Address_Street, Ch_Address_City, Ch_Address_State, Ch_Address_Zipcode, Custody)
 	VALUES(4, 'Bob','Barker',14,'L','M','Caucasian','124 Fleet street','London','NY','11111','mother');
 
