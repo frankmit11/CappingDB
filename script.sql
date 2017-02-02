@@ -10,8 +10,8 @@
 CREATE TABLE IF NOT EXISTS Referrals (
   P_Num SERIAL not null,
   Ref_F_Name VARCHAR(20),
-  Ref_L_Name VARCHAR(20),
-  Ref_MI_Name VARCHAR(1),
+  Ref_L_Name VARCHAR(20)
+ , Ref_MI_Name VARCHAR(1),
   Ref_Street VARCHAR(30),
   Ref_City VARCHAR(30),
   Ref_State VARCHAR(2),
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Reference_Conditions (
 
 
 CREATE TABLE IF NOT EXISTS Ref_Indiv_Condition (
-  P_Num SERIAL not null references Referrals(P_Num), 
+  P_Num SERIAL not null references Referrals(P_Num) ON DELETE CASCADE, 
   Condition_Key SERIAL not null references Reference_Conditions(Condition_Key),
   PRIMARY KEY (P_Num, Condition_Key)
 );
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Ref_Indiv_Condition (
 
 
 CREATE TABLE IF NOT EXISTS Ref_Household_Info(
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num), 
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE, 
   H_F_Name VARCHAR(20) NOT NULL,
   H_L_Name VARCHAR(20) NOT NULL,
   H_Date DATE NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Ref_Household_Info(
 
 
 CREATE TABLE IF NOT EXISTS Other_Agencies(
-  P_Num serial NOT NULL REFERENCES Referrals(P_Num),
+  P_Num serial NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   Agency_Name VARCHAR(20) NOT NULl,
   Working_With VARCHAR(40),
   Relation VARCHAR(20),
@@ -92,13 +92,13 @@ CREATE TABLE IF NOT EXISTS Curriculum(
 
 
 CREATE TABLE IF NOT EXISTS Participants(
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num),
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   CID SERIAL NOT NULL REFERENCES Curriculum(CID),
   Sex VARCHAR(1),
   Race VARCHAR(20),
   Number_Of_Children INTEGER,
   Status VARCHAR(15),
-  PRIMARY KEY(P_Num, CID)
+  PRIMARY KEY(P_Num)
 );
 
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS Class_Subjects(
 
 
 CREATE TABLE IF NOT EXISTS Curriculum_Subjects(
-  C_Subject SERIAL UNIQUE NOT NULL REFERENCES Class_Subjects(C_Subject),
+  C_Subject SERIAL NOT NULL REFERENCES Class_Subjects(C_Subject),
   CID SERIAL NOT NULL REFERENCES Curriculum(CID),
   PRIMARY KEY(C_Subject, CID)
 );
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS Classes_Scheduled(
   CID SERIAL NOT NULL REFERENCES Curriculum(CID),
   EID SERIAL NOT NULL REFERENCES Employees(EID),
   Location_ID SERIAL NOT NULL REFERENCES Locations(Location_ID),
-  C_Subject SERIAL NOT NULL REFERENCES Curriculum_Subjects(C_Subject),
+  C_Subject SERIAL NOT NULL REFERENCES Class_Subjects(C_Subject),
   Date_Time_Schedules TIMESTAMP,
   PRIMARY KEY (Class_ID, CID, EID, Location_ID, C_Subject)
 );
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS Classes_Scheduled(
 CREATE TABLE IF NOT EXISTS Class_Attendence(
   EID SERIAL NOT NULL REFERENCES Employees(EID),
   Class_ID SERIAL NOT NULL REFERENCES Classes_Scheduled(Class_ID),
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num),
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   Participant_Comment VARCHAR(250),
   PRIMARY KEY(EID, Class_ID, P_Num)
 );
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS Class_Attendence(
 
 
 CREATE TABLE IF NOT EXISTS Consent_to_Release_Info(
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num),
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   Agency_Name VARCHAR(20) NOT NULL,
   Contact_F_Name VARCHAR(20),
   Contact_L_Name VARCHAR(20),
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS Consent_to_Release_Info(
 
 
 CREATE TABLE IF NOT EXISTS Participant_Intake(
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num),
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   Age INTEGER NOT NULL,
   Num_People_in_Home INTEGER,
   Relation_to_Household VARCHAR(50),
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS Participant_Intake(
 
 
 CREATE TABLE IF NOT EXISTS Intk_Children(
-  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num),
+  P_Num SERIAL NOT NULL REFERENCES Referrals(P_Num) ON DELETE CASCADE,
   Ch_F_Name VARCHAR(20) NOT NULL,
   Ch_L_Name VARCHAR(20) NOT NULL,
   Ch_Age INTEGER NOT NULL,
